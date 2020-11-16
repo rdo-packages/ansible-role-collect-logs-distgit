@@ -16,6 +16,24 @@
       "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "229f9bb1_c6d76b37",
+        "filename": "ansible-role-collect-logs.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 138
+      },
+      "writtenOn": "2020-11-16T17:48:01Z",
+      "side": 1,
+      "message": "ya.. I had the same thought.. WHY IS THAT XXX..\n\nHowever other ansible-role have the same thing merged.\nhttps://github.com/rdo-packages/ansible-role-chrony-distgit/blob/rpm-master/ansible-role-chrony.spec#L10",
+      "parentUuid": "c89fdfb7_f4390257",
+      "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
