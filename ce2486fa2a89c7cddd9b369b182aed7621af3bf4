@@ -70,6 +70,24 @@
       "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb74b471_53c57639",
+        "filename": "ansible-role-collect-logs.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2020-11-17T08:47:11Z",
+      "side": 1,
+      "message": "IMO, it depends how/where is going to be used. If there are plans to use this role integrated in tripleo or other tools (i heard something about sosreport?) that are being distributed as rpms it may be a good idea to package it in rpm too. Additionally, building it as rpm and distributing it as a collection from https://galaxy.ansible.com/ are compatible, you can provide both to cover different users or use cases.",
+      "parentUuid": "987845db_003a4f44",
+      "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
