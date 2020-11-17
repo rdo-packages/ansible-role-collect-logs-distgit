@@ -52,6 +52,24 @@
       "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "987845db_003a4f44",
+        "filename": "ansible-role-collect-logs.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 371
+      },
+      "writtenOn": "2020-11-17T08:22:12Z",
+      "side": 1,
+      "message": "I am afraid I cannot help with rpm spec itself as my knowledge of spec files is low.\n\nStill, I want to mention two things I problematic:\n\n- ansible content should be distributed as collections not as rpms. it is much easier, reliable and is platform independent. Only trick, we need ansible 2.9 minimal, which should not be a problem.\n\n- if we decide to still package the role as rpm, we should do it from within the upstream repository directly. We have no excuse for doing it there and assuring that it does not break without us knowing. We have full control over the repository so the need to create a distgit repo.",
+      "parentUuid": "9db732b2_a93dc9e4",
+      "revId": "ce2486fa2a89c7cddd9b369b182aed7621af3bf4",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
