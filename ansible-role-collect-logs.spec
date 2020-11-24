@@ -1,6 +1,15 @@
-%{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-# %global sources_gpg_sign <get the Cryptographic Signatures of current release from https://releases.openstack.org/#cryptographic-signatures>
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %{expand:%{python%{pyver}_sitelib}}
+%global pyver_install %{expand:%{py%{pyver}_install}}
+%global pyver_build %{expand:%{py%{pyver}_build}}
+# End of macros for py2/py3 compatibility
 
 %global srcname ansible_role_collect_logs
 %global rolename ansible-role-collect-logs
@@ -8,58 +17,52 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           %{rolename}
-Version:        XXX
-Release:        XXX
+Version:        1.2.0
+Release:        1%{?dist}
 Summary:        Ansible role to collect the logs from a TripleO/OSP based deployment of OpenStack
 
 Group:          System Environment/Base
 License:        ASL 2.0
 URL:            https://git.openstack.org/cgit/openstack/ansible-role-collect-logs
 Source0:        https://tarballs.openstack.org/%{rolename}/%{rolename}-%{upstream_version}.tar.gz
-# Required for tarball sources verification
-%if 0%{?sources_gpg} == 1
-Source101:        https://tarballs.openstack.org/%{rolename}/%{rolename}-%{upstream_version}.tar.gz.asc
-Source102:        https://releases.openstack.org/_static/%{sources_gpg_sign}.txt
-%endif
 
 BuildArch:      noarch
 
-# Required for tarball sources verification
-%if 0%{?sources_gpg} == 1
-BuildRequires:  /usr/bin/gpgv2
-BuildRequires:  openstack-macros
-%endif
-BuildRequires:  python3dist(ansible)
 BuildRequires:  git-core
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-pbr
-BuildRequires:  /usr/bin/pathfix.py
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python%{pyver}-pbr
 
+# Handle python2 exception
+%if %{pyver} == 2
+Requires: ansible
+BuildRequires: ansible
+%else
+BuildRequires: python3dist(ansible)
 Requires: python3dist(ansible)
+BuildRequires:  /usr/bin/pathfix.py
+%endif
 
 %description
 
 Ansible role to collect the logs from a TripleO/OSP based deployment of OpenStack
 
 %prep
-# Required for tarball sources verification
-%if 0%{?sources_gpg} == 1
-%{gpgverify}  --keyring=%{SOURCE102} --signature=%{SOURCE101} --data=%{SOURCE0}
-%endif
 %autosetup -n %{rolename}-%{upstream_version} -S git
 
 
 %build
-%py3_build
+%pyver_build
 
 
 %install
 export PBR_VERSION=%{version}
 export SKIP_PIP_INSTALL=1
-%py3_install
+%pyver_install
 # Fix shebang
+%if %{pyver} == 3
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" %{buildroot}/usr/share/ansible/roles/collect-logs/library/flatten_nested_dict.py
+%endif
 
 %check
 ROLE_NAME="collect-logs"
@@ -68,8 +71,10 @@ ansible-galaxy list -p %{buildroot}/usr/share/ansible/roles $ROLE_NAME|grep -v "
 %files
 %doc README*
 %license LICENSE
-%{python3_sitelib}/%{srcname}-*.egg-info
+%{pyver_sitelib}/%{srcname}-*.egg-info
 %{_datadir}/ansible/
 
 
 %changelog
+* Tue Nov 24 2020 Chandan Kumar <chkumar@redhat.com> 1.0.0-1
+- Bump to version 1.0.0
