@@ -75,3 +75,4 @@ ansible-galaxy list -p %{buildroot}/usr/share/ansible/roles $ROLE_NAME|grep -v "
 
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/ansible-role-collect-logs/commit/a1138ea71d9e1f0dc03718292cf53f5cb6f92660
