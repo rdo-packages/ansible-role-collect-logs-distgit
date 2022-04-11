@@ -1,9 +1,9 @@
 # UUID Group Name
 global:Registered-Users	Registered Users
-global:Anonymous-Users	Anonymous Users
-5792458729c2d59f6f1d7a00ce46d8b2a537c52e	openstack/ansible-role-collect-logs-ptl
-4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
-401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
-208d78fcfd76c4b40dd30e308a92f36dfa394885	openstack/ansible-role-collect-logs-core
 05a678d3d4a168e149d5e8a0063bbd1b1c5526da	Administrators
 6ddfecad023c6f4fa3ac8c4d2583c502ea675a73	Service Users
+208d78fcfd76c4b40dd30e308a92f36dfa394885	openstack/ansible-role-collect-logs-core
+4572c517702492251ad622a289176552a8acbbb2	rdo-superusers
+5792458729c2d59f6f1d7a00ce46d8b2a537c52e	openstack/ansible-role-collect-logs-ptl
+401cf37bee35d1c809d4d957e55f2a304f8eed69	rdo-provenpackagers
+global:Anonymous-Users	Anonymous Users
