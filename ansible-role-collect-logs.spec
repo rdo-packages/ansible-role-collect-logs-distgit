@@ -1,6 +1,6 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
 # %global sources_gpg_sign <get the Cryptographic Signatures of current release from https://releases.openstack.org/#cryptographic-signatures>
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0xa63ea142678138d1bb15f2e303bdfd64dd164087
 
 %global srcname ansible_role_collect_logs
 %global rolename ansible-role-collect-logs
@@ -8,8 +8,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           %{rolename}
-Version:        XXX
-Release:        XXX
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Ansible role to collect the logs from a TripleO/OSP based deployment of OpenStack
 
 Group:          System Environment/Base
@@ -75,3 +75,6 @@ ansible-galaxy list -p %{buildroot}/usr/share/ansible/roles $ROLE_NAME|grep -v "
 
 
 %changelog
+* Wed Apr 13 2022 RDO <dev@lists.rdoproject.org> 1.5.0-1
+- Update to 1.5.0
+
