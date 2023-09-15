@@ -78,3 +78,4 @@ ansible-galaxy list -p %{buildroot}/usr/share/ansible/roles $ROLE_NAME|grep -v "
 %changelog
 * Tue Nov 24 2020 Chandan Kumar <chkumar@redhat.com> 1.0.0-1
 - Bump to version 1.0.0
+# REMOVEME: error caused by commit https://opendev.org/openstack/ansible-role-collect-logs/commit/b7430bdece896e6e1e691b7731fba5dc7e139ca1
